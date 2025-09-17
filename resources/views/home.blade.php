@@ -29,209 +29,66 @@
                         <div class="col-lg-6">
                             <div class="swiper gallery-left overflow-y-visible">
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide w-100" data-bg="assets/imgs/page/bg-home1-sec9-1.png">
-                                        <div class="article">
-                                            <div class="card-body">
-                                                <a href="#" class="badge bg-2 fs-8 mb-3">Lifestyle</a>
-                                                <h5 class="card-title mb-0 text-white changeless">The Future of Work:
-                                                    Remote, AI-Driven, and Flexible</h5>
-                                                <p class="card-text text-white mb-0 fs-7 mt-3 changeless">Once dismissed as
-                                                    counterculture, urban fashion has climbed its way from city sidewalks to
-                                                    the catwalks of major fashion capitals.</p>
-                                                <div class="bottom mt-auto d-flex flex-wrap align-items-center gap-2 pt-5">
-                                                    <a href="#" class="author d-flex align-items-center gap-2">
-                                                        <img class="avatar avatar-md rounded-circle"
-                                                            src="assets/imgs/template/author/author-5.png" alt="magzin">
-                                                        <span class="fs-7 text-white fw-regular changeless">John Doe</span>
-                                                    </a>
-                                                    <ul
-                                                        class="d-flex align-items-center gap-4 text-white m-0 ps-3 changeless">
-                                                        <li>
-                                                            <p class="fs-7 m-0 text-white changeless">25th July 2025</p>
-                                                        </li>
-                                                    </ul>
+                                    @foreach ($posts as $post)
+                                 
+                                        <div class="swiper-slide w-100" data-bg="{{ $post->featured_image_url }}">
+                                            <div class="article">
+                                                <div class="card-body">
+                                                    <a href="#"
+                                                        class="badge bg-2 fs-8 mb-3">{{ $post->category->name ?? '-' }}</a>
+                                                    <h5 class="card-title mb-0 text-white changeless">{{ $post->title }}
+                                                    </h5>
+                                                    <p class="card-text text-white mb-0 fs-7 mt-3 changeless">
+                                                        {{ $post->excerpt }}</p>
                                                     <div
-                                                        class="right ms-md-auto ms-5 d-flex align-items-center gap-3 me-5 pe-5">
-                                                        <a href="#" class="comment fs-8">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                                height="20" viewBox="0 0 20 20" fill="none">
-                                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                    d="M2.50018 5.43423C2.50018 4.26961 3.44494 3.3255 4.61035 3.3255H15.39C16.5554 3.3255 17.5002 4.26961 17.5002 5.43422V13.1078C17.5002 14.2724 16.5554 15.2165 15.39 15.2165H6.3295L3.41902 17.3786C3.24443 17.5083 3.01159 17.5285 2.81722 17.4309C2.62285 17.3333 2.50018 17.1345 2.50018 16.9171V5.43423ZM4.61035 4.47571C4.08062 4.47571 3.65118 4.90485 3.65118 5.43423V15.7729L5.79569 14.1799C5.89495 14.1062 6.01534 14.0663 6.13902 14.0663H15.39C15.9197 14.0663 16.3492 13.6372 16.3492 13.1078V5.43422C16.3492 4.90485 15.9197 4.47571 15.39 4.47571H4.61035Z"
-                                                                    fill="#fff" />
-                                                            </svg>
-                                                            <span class="text-white changeless"><span
-                                                                    class="odometer text-nowrap"
-                                                                    data-count="25"></span></span>
+                                                        class="bottom mt-auto d-flex flex-wrap align-items-center gap-2 pt-5">
+                                                        <a href="#" class="author d-flex align-items-center gap-2">
+                                                            <img class="avatar avatar-md rounded-circle"
+                                                                src="{{ $post->user->avatar ?? asset('assets/img/default.jpg') }}"
+                                                                alt="author">
+                                                            <span
+                                                                class="fs-7 text-white fw-regular changeless">{{ $post->user->name ?? $post->author }}</span>
                                                         </a>
-                                                        <a href="#" class="readers fs-8">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                                height="20" viewBox="0 0 20 20" fill="none">
-                                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                    d="M17.186 10.3224C15.734 13.039 12.9803 14.7266 10.001 14.7266C7.01977 14.7266 4.26612 13.039 2.81407 10.3224C2.70224 10.1114 2.70224 9.88843 2.81407 9.67767C4.26612 6.96107 7.01977 5.27366 10.001 5.27366C12.9803 5.27366 15.7339 6.96107 17.186 9.67767C17.2998 9.88843 17.2998 10.1114 17.186 10.3224ZM18.1135 9.13905C16.4744 6.07185 13.366 4.16669 10.001 4.16669C6.63409 4.16669 3.52561 6.07185 1.88652 9.13905C1.59341 9.68631 1.59341 10.3137 1.88652 10.8606C3.52561 13.9278 6.63409 15.8334 10.001 15.8334C13.366 15.8334 16.4744 13.9278 18.1135 10.8606C18.4066 10.3138 18.4066 9.68631 18.1135 9.13905ZM10.001 12.2707C11.2024 12.2707 12.18 11.2522 12.18 9.99993C12.18 8.7477 11.2024 7.72912 10.001 7.72912C8.79769 7.72912 7.82002 8.7477 7.82002 9.99993C7.82002 11.2522 8.79773 12.2707 10.001 12.2707ZM10.001 6.62215C8.21147 6.62215 6.75752 8.13757 6.75752 9.99997C6.75752 11.8628 8.21151 13.3776 10.001 13.3776C11.7886 13.3776 13.2425 11.8627 13.2425 9.99997C13.2425 8.13757 11.7886 6.62215 10.001 6.62215Z"
-                                                                    fill="#fff" />
-                                                            </svg>
-                                                            <span class="text-white changeless"><span
-                                                                    class="odometer text-nowrap"
-                                                                    data-count="162"></span></span>
-                                                        </a>
+                                                        <ul
+                                                            class="d-flex align-items-center gap-4 text-white m-0 ps-3 changeless">
+                                                            <li>
+                                                                <p class="fs-7 m-0 text-white changeless">
+                                                                    {{ $post->published_at ? $post->published_at->format('M d, Y') : '-' }}
+                                                                </p>
+                                                            </li>
+                                                        </ul>
+                                                        <div
+                                                            class="right ms-md-auto ms-5 d-flex align-items-center gap-3 me-5 pe-5">
+                                                            <a href="#" class="comment fs-8">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                                                    height="20" viewBox="0 0 20 20" fill="none">
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                        d="M2.50018 5.43423C2.50018 4.26961 3.44494 3.3255 4.61035 3.3255H15.39C16.5554 3.3255 17.5002 4.26961 17.5002 5.43422V13.1078C17.5002 14.2724 16.5554 15.2165 15.39 15.2165H6.3295L3.41902 17.3786C3.24443 17.5083 3.01159 17.5285 2.81722 17.4309C2.62285 17.3333 2.50018 17.1345 2.50018 16.9171V5.43423ZM4.61035 4.47571C4.08062 4.47571 3.65118 4.90485 3.65118 5.43423V15.7729L5.79569 14.1799C5.89495 14.1062 6.01534 14.0663 6.13902 14.0663H15.39C15.9197 14.0663 16.3492 13.6372 16.3492 13.1078V5.43422C16.3492 4.90485 15.9197 4.47571 15.39 4.47571H4.61035Z"
+                                                                        fill="#fff" />
+                                                                </svg>
+                                                                <span class="text-white changeless">
+                                                                    <span class="odometer text-nowrap"
+                                                                        data-count="{{ $post->comments_count ?? 0 }}"></span>
+                                                                </span>
+                                                            </a>
+                                                            <a href="#" class="readers fs-8">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                                                    height="20" viewBox="0 0 20 20" fill="none">
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                        d="M17.186 10.3224C15.734 13.039 12.9803 14.7266 10.001 14.7266C7.01977 14.7266 4.26612 13.039 2.81407 10.3224C2.70224 10.1114 2.70224 9.88843 2.81407 9.67767C4.26612 6.96107 7.01977 5.27366 10.001 5.27366C12.9803 5.27366 15.7339 6.96107 17.186 9.67767C17.2998 9.88843 17.2998 10.1114 17.186 10.3224ZM18.1135 9.13905C16.4744 6.07185 13.366 4.16669 10.001 4.16669C6.63409 4.16669 3.52561 6.07185 1.88652 9.13905C1.59341 9.68631 1.59341 10.3137 1.88652 10.8606C3.52561 13.9278 6.63409 15.8334 10.001 15.8334C13.366 15.8334 16.4744 13.9278 18.1135 10.8606C18.4066 10.3138 18.4066 9.68631 18.1135 9.13905ZM10.001 12.2707C11.2024 12.2707 12.18 11.2522 12.18 9.99993C12.18 8.7477 11.2024 7.72912 10.001 7.72912C8.79769 7.72912 7.82002 8.7477 7.82002 9.99993C7.82002 11.2522 8.79773 12.2707 10.001 12.2707ZM10.001 6.62215C8.21147 6.62215 6.75752 8.13757 6.75752 9.99997C6.75752 11.8628 8.21151 13.3776 10.001 13.3776C11.7886 13.3776 13.2425 11.8627 13.2425 9.99997C13.2425 8.13757 11.7886 6.62215 10.001 6.62215Z"
+                                                                        fill="#fff" />
+                                                                </svg>
+                                                                <span class="text-white changeless">
+                                                                    <span class="odometer text-nowrap"
+                                                                        data-count="{{ $post->view_count ?? 0 }}"></span>
+                                                                </span>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="swiper-slide w-100" data-bg="assets/imgs/page/bg-home1-sec9-2.png">
-                                        <div class="article">
-                                            <div class="card-body">
-                                                <a href="#" class="badge bg-2 fs-8 mb-3">Lifestyle</a>
-
-                                                <h5 class="card-title mb-0 text-white changeless">Style That Speaks:
-                                                    Minimalist Fashion for Maximum Impact</h5>
-                                                <p class="card-text text-white mb-0 fs-7 mt-3 changeless">Once dismissed as
-                                                    counterculture, urban fashion has climbed its way from city sidewalks to
-                                                    the catwalks of major fashion capitals.</p>
-                                                <div class="bottom mt-auto d-flex flex-wrap align-items-center gap-2 pt-5">
-                                                    <a href="#" class="author d-flex align-items-center gap-2">
-                                                        <img class="avatar avatar-md rounded-circle"
-                                                            src="assets/imgs/template/author/author-5.png" alt="magzin">
-                                                        <span class="fs-7 text-white fw-regular changeless">John Doe</span>
-                                                    </a>
-                                                    <ul
-                                                        class="d-flex align-items-center gap-4 text-white m-0 ps-3 changeless">
-                                                        <li>
-                                                            <p class="fs-7 m-0 text-white changeless">25th July 2025</p>
-                                                        </li>
-                                                    </ul>
-                                                    <div
-                                                        class="right ms-md-auto ms-5 d-flex align-items-center gap-3 me-5 pe-5">
-                                                        <a href="#" class="comment fs-8">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                                height="20" viewBox="0 0 20 20" fill="none">
-                                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                    d="M2.50018 5.43423C2.50018 4.26961 3.44494 3.3255 4.61035 3.3255H15.39C16.5554 3.3255 17.5002 4.26961 17.5002 5.43422V13.1078C17.5002 14.2724 16.5554 15.2165 15.39 15.2165H6.3295L3.41902 17.3786C3.24443 17.5083 3.01159 17.5285 2.81722 17.4309C2.62285 17.3333 2.50018 17.1345 2.50018 16.9171V5.43423ZM4.61035 4.47571C4.08062 4.47571 3.65118 4.90485 3.65118 5.43423V15.7729L5.79569 14.1799C5.89495 14.1062 6.01534 14.0663 6.13902 14.0663H15.39C15.9197 14.0663 16.3492 13.6372 16.3492 13.1078V5.43422C16.3492 4.90485 15.9197 4.47571 15.39 4.47571H4.61035Z"
-                                                                    fill="#fff" />
-                                                            </svg>
-                                                            <span class="text-white changeless"><span
-                                                                    class="odometer text-nowrap"
-                                                                    data-count="25"></span></span>
-                                                        </a>
-                                                        <a href="#" class="readers fs-8">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                                height="20" viewBox="0 0 20 20" fill="none">
-                                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                    d="M17.186 10.3224C15.734 13.039 12.9803 14.7266 10.001 14.7266C7.01977 14.7266 4.26612 13.039 2.81407 10.3224C2.70224 10.1114 2.70224 9.88843 2.81407 9.67767C4.26612 6.96107 7.01977 5.27366 10.001 5.27366C12.9803 5.27366 15.7339 6.96107 17.186 9.67767C17.2998 9.88843 17.2998 10.1114 17.186 10.3224ZM18.1135 9.13905C16.4744 6.07185 13.366 4.16669 10.001 4.16669C6.63409 4.16669 3.52561 6.07185 1.88652 9.13905C1.59341 9.68631 1.59341 10.3137 1.88652 10.8606C3.52561 13.9278 6.63409 15.8334 10.001 15.8334C13.366 15.8334 16.4744 13.9278 18.1135 10.8606C18.4066 10.3138 18.4066 9.68631 18.1135 9.13905ZM10.001 12.2707C11.2024 12.2707 12.18 11.2522 12.18 9.99993C12.18 8.7477 11.2024 7.72912 10.001 7.72912C8.79769 7.72912 7.82002 8.7477 7.82002 9.99993C7.82002 11.2522 8.79773 12.2707 10.001 12.2707ZM10.001 6.62215C8.21147 6.62215 6.75752 8.13757 6.75752 9.99997C6.75752 11.8628 8.21151 13.3776 10.001 13.3776C11.7886 13.3776 13.2425 11.8627 13.2425 9.99997C13.2425 8.13757 11.7886 6.62215 10.001 6.62215Z"
-                                                                    fill="#fff" />
-                                                            </svg>
-                                                            <span class="text-white changeless"><span
-                                                                    class="odometer text-nowrap"
-                                                                    data-count="162"></span></span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide w-100" data-bg="assets/imgs/page/bg-home1-sec9-3.png">
-                                        <div class="article">
-                                            <div class="card-body">
-                                                <a href="#" class="badge bg-2 fs-8 mb-3">Lifestyle</a>
-
-                                                <h5 class="card-title mb-0 text-white changeless">Mastering the Art of
-                                                    Productive Mornings</h5>
-                                                <p class="card-text text-white mb-0 fs-7 mt-3 changeless">Once dismissed as
-                                                    counterculture, urban fashion has climbed its way from city sidewalks to
-                                                    the catwalks of major fashion capitals.</p>
-                                                <div class="bottom mt-auto d-flex flex-wrap align-items-center gap-2 pt-5">
-                                                    <a href="#" class="author d-flex align-items-center gap-2">
-                                                        <img class="avatar avatar-md rounded-circle"
-                                                            src="assets/imgs/template/author/author-5.png" alt="magzin">
-                                                        <span class="fs-7 text-white fw-regular changeless">John Doe</span>
-                                                    </a>
-                                                    <ul
-                                                        class="d-flex align-items-center gap-4 text-white m-0 ps-3 changeless">
-                                                        <li>
-                                                            <p class="fs-7 m-0 text-white changeless">25th July 2025</p>
-                                                        </li>
-                                                    </ul>
-                                                    <div
-                                                        class="right ms-md-auto ms-5 d-flex align-items-center gap-3 me-5 pe-5">
-                                                        <a href="#" class="comment fs-8">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                                height="20" viewBox="0 0 20 20" fill="none">
-                                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                    d="M2.50018 5.43423C2.50018 4.26961 3.44494 3.3255 4.61035 3.3255H15.39C16.5554 3.3255 17.5002 4.26961 17.5002 5.43422V13.1078C17.5002 14.2724 16.5554 15.2165 15.39 15.2165H6.3295L3.41902 17.3786C3.24443 17.5083 3.01159 17.5285 2.81722 17.4309C2.62285 17.3333 2.50018 17.1345 2.50018 16.9171V5.43423ZM4.61035 4.47571C4.08062 4.47571 3.65118 4.90485 3.65118 5.43423V15.7729L5.79569 14.1799C5.89495 14.1062 6.01534 14.0663 6.13902 14.0663H15.39C15.9197 14.0663 16.3492 13.6372 16.3492 13.1078V5.43422C16.3492 4.90485 15.9197 4.47571 15.39 4.47571H4.61035Z"
-                                                                    fill="#fff" />
-                                                            </svg>
-                                                            <span class="text-white changeless"><span
-                                                                    class="odometer text-nowrap"
-                                                                    data-count="25"></span></span>
-                                                        </a>
-                                                        <a href="#" class="readers fs-8">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                                height="20" viewBox="0 0 20 20" fill="none">
-                                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                    d="M17.186 10.3224C15.734 13.039 12.9803 14.7266 10.001 14.7266C7.01977 14.7266 4.26612 13.039 2.81407 10.3224C2.70224 10.1114 2.70224 9.88843 2.81407 9.67767C4.26612 6.96107 7.01977 5.27366 10.001 5.27366C12.9803 5.27366 15.7339 6.96107 17.186 9.67767C17.2998 9.88843 17.2998 10.1114 17.186 10.3224ZM18.1135 9.13905C16.4744 6.07185 13.366 4.16669 10.001 4.16669C6.63409 4.16669 3.52561 6.07185 1.88652 9.13905C1.59341 9.68631 1.59341 10.3137 1.88652 10.8606C3.52561 13.9278 6.63409 15.8334 10.001 15.8334C13.366 15.8334 16.4744 13.9278 18.1135 10.8606C18.4066 10.3138 18.4066 9.68631 18.1135 9.13905ZM10.001 12.2707C11.2024 12.2707 12.18 11.2522 12.18 9.99993C12.18 8.7477 11.2024 7.72912 10.001 7.72912C8.79769 7.72912 7.82002 8.7477 7.82002 9.99993C7.82002 11.2522 8.79773 12.2707 10.001 12.2707ZM10.001 6.62215C8.21147 6.62215 6.75752 8.13757 6.75752 9.99997C6.75752 11.8628 8.21151 13.3776 10.001 13.3776C11.7886 13.3776 13.2425 11.8627 13.2425 9.99997C13.2425 8.13757 11.7886 6.62215 10.001 6.62215Z"
-                                                                    fill="#fff" />
-                                                            </svg>
-                                                            <span class="text-white changeless"><span
-                                                                    class="odometer text-nowrap"
-                                                                    data-count="162"></span></span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide w-100" data-bg="assets/imgs/page/bg-home1-sec9-2.png">
-                                        <div class="article">
-                                            <div class="card-body">
-                                                <a href="#" class="badge bg-2 fs-8 mb-3">Lifestyle</a>
-
-                                                <h5 class="card-title mb-0 text-white changeless">From Street to Runway:
-                                                    How Urban Fashion is Redefining Style</h5>
-                                                <p class="card-text text-white mb-0 fs-7 mt-3 changeless">Once dismissed as
-                                                    counterculture, urban fashion has climbed its way from city sidewalks to
-                                                    the catwalks of major fashion capitals.</p>
-                                                <div class="bottom mt-auto d-flex flex-wrap align-items-center gap-2 pt-5">
-                                                    <a href="#" class="author d-flex align-items-center gap-2">
-                                                        <img class="avatar avatar-md rounded-circle"
-                                                            src="assets/imgs/template/author/author-5.png" alt="magzin">
-                                                        <span class="fs-7 text-white fw-regular changeless">John Doe</span>
-                                                    </a>
-                                                    <ul
-                                                        class="d-flex align-items-center gap-4 text-white m-0 ps-3 changeless">
-                                                        <li>
-                                                            <p class="fs-7 m-0 text-white changeless">25th July 2025</p>
-                                                        </li>
-                                                    </ul>
-                                                    <div
-                                                        class="right ms-md-auto ms-5 d-flex align-items-center gap-3 me-5 pe-5">
-                                                        <a href="#" class="comment fs-8">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                                height="20" viewBox="0 0 20 20" fill="none">
-                                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                    d="M2.50018 5.43423C2.50018 4.26961 3.44494 3.3255 4.61035 3.3255H15.39C16.5554 3.3255 17.5002 4.26961 17.5002 5.43422V13.1078C17.5002 14.2724 16.5554 15.2165 15.39 15.2165H6.3295L3.41902 17.3786C3.24443 17.5083 3.01159 17.5285 2.81722 17.4309C2.62285 17.3333 2.50018 17.1345 2.50018 16.9171V5.43423ZM4.61035 4.47571C4.08062 4.47571 3.65118 4.90485 3.65118 5.43423V15.7729L5.79569 14.1799C5.89495 14.1062 6.01534 14.0663 6.13902 14.0663H15.39C15.9197 14.0663 16.3492 13.6372 16.3492 13.1078V5.43422C16.3492 4.90485 15.9197 4.47571 15.39 4.47571H4.61035Z"
-                                                                    fill="#fff" />
-                                                            </svg>
-                                                            <span class="text-white changeless"><span
-                                                                    class="odometer text-nowrap"
-                                                                    data-count="25"></span></span>
-                                                        </a>
-                                                        <a href="#" class="readers fs-8">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                                height="20" viewBox="0 0 20 20" fill="none">
-                                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                    d="M17.186 10.3224C15.734 13.039 12.9803 14.7266 10.001 14.7266C7.01977 14.7266 4.26612 13.039 2.81407 10.3224C2.70224 10.1114 2.70224 9.88843 2.81407 9.67767C4.26612 6.96107 7.01977 5.27366 10.001 5.27366C12.9803 5.27366 15.7339 6.96107 17.186 9.67767C17.2998 9.88843 17.2998 10.1114 17.186 10.3224ZM18.1135 9.13905C16.4744 6.07185 13.366 4.16669 10.001 4.16669C6.63409 4.16669 3.52561 6.07185 1.88652 9.13905C1.59341 9.68631 1.59341 10.3137 1.88652 10.8606C3.52561 13.9278 6.63409 15.8334 10.001 15.8334C13.366 15.8334 16.4744 13.9278 18.1135 10.8606C18.4066 10.3138 18.4066 9.68631 18.1135 9.13905ZM10.001 12.2707C11.2024 12.2707 12.18 11.2522 12.18 9.99993C12.18 8.7477 11.2024 7.72912 10.001 7.72912C8.79769 7.72912 7.82002 8.7477 7.82002 9.99993C7.82002 11.2522 8.79773 12.2707 10.001 12.2707ZM10.001 6.62215C8.21147 6.62215 6.75752 8.13757 6.75752 9.99997C6.75752 11.8628 8.21151 13.3776 10.001 13.3776C11.7886 13.3776 13.2425 11.8627 13.2425 9.99997C13.2425 8.13757 11.7886 6.62215 10.001 6.62215Z"
-                                                                    fill="#fff" />
-                                                            </svg>
-                                                            <span class="text-white changeless"><span
-                                                                    class="odometer text-nowrap"
-                                                                    data-count="162"></span></span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                                 <div class="swiper-pagination"></div>
                             </div>
@@ -239,50 +96,18 @@
                         <div class="col-lg-5 col-md-8 ms-lg-auto align-self-stretch">
                             <div class="swiper gallery-thumbs h-100">
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide w-100">
-                                        <div class="card-swiper-thumb">
-                                            <div class="thumb changeless">
-                                                <img src="assets/imgs/page/img-36.png" alt="magzin">
-                                            </div>
-                                            <div class="card-content">
-                                                <h6 class="text-white mb-0 changeless">The Future of Work: Remote,
-                                                    AI-Driven, and Flexible</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide w-100">
-                                        <div class="card-swiper-thumb">
-                                            <div class="thumb changeless">
-                                                <img src="assets/imgs/page/img-37.png" alt="magzin">
-                                            </div>
-                                            <div class="card-content">
-                                                <h6 class="text-white mb-0 changeless">Style That Speaks: Minimalist
-                                                    Fashion for Maximum Impact</h6>
+                                    @foreach ($posts as $post)
+                                        <div class="swiper-slide w-100">
+                                            <div class="card-swiper-thumb">
+                                                <div class="thumb changeless">
+                                                    <img src="{{ $post->featured_image_url }}" alt="thumb">
+                                                </div>
+                                                <div class="card-content">
+                                                    <h6 class="text-white mb-0 changeless">{{ $post->title }}</h6>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="swiper-slide w-100">
-                                        <div class="card-swiper-thumb">
-                                            <div class="thumb changeless">
-                                                <img src="assets/imgs/page/img-36.png" alt="magzin">
-                                            </div>
-                                            <div class="card-content">
-                                                <h6 class="text-white mb-0 changeless">Mastering the Art of Productive
-                                                    Mornings</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide w-100">
-                                        <div class="card-swiper-thumb">
-                                            <div class="thumb changeless">
-                                                <img src="assets/imgs/page/img-38.png" alt="magzin">
-                                            </div>
-                                            <div class="card-content">
-                                                <h6 class="text-white mb-0 changeless">From Street to Runway: How Urban
-                                                    Fashion is Redefining Style</h6>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -1153,8 +978,8 @@
                             <li class="page-item">
                                 <a class="icon-lg pagination_item rounded-circle icon-shape" href="#"
                                     aria-label="Previous">
-                                    <svg class="" xmlns="http://www.w3.org/2000/svg" width="22"
-                                        height="22" viewBox="0 0 22 22" fill="none">
+                                    <svg class="" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                        viewBox="0 0 22 22" fill="none">
                                         <path d="M9.49993 6.5L4.78564 11L9.49993 15.5" stroke="#0E0E0F"
                                             stroke-width="1.28571" stroke-linecap="round" stroke-linejoin="round" />
                                         <path d="M17.2143 11H5" stroke="#0E0E0F" stroke-width="1.28571"
@@ -1189,8 +1014,8 @@
                             <li class="page-item">
                                 <a class="icon-lg pagination_item rounded-circle icon-shape" href="#"
                                     aria-label="Next">
-                                    <svg class="" xmlns="http://www.w3.org/2000/svg" width="22"
-                                        height="22" viewBox="0 0 22 22" fill="none">
+                                    <svg class="" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                        viewBox="0 0 22 22" fill="none">
                                         <path d="M12.5 6.5L17.2143 11L12.5 15.5" stroke="#0E0E0F" stroke-width="1.28571"
                                             stroke-linecap="round" stroke-linejoin="round" />
                                         <path d="M16.9999 11H4.78564" stroke="#0E0E0F" stroke-width="1.28571"
@@ -1209,8 +1034,7 @@
                     <div class="author-card">
                         <div class="card-img mb-4 d-flex justify-content-center">
                             <a href="page-author.html" class="author-avartar rounded-circle avatar-154 overflow-hidden">
-                                <img class="cover-image" src="assets/imgs/template/author/author-16.png"
-                                    alt="magzin">
+                                <img class="cover-image" src="assets/imgs/template/author/author-16.png" alt="magzin">
                             </a>
                         </div>
                         <div class="card-body text-center">
@@ -1254,8 +1078,8 @@
                 </div>
                 <div class="col-md-6 col-lg-12 col-12">
                     <div class="d-flex align-items-center gap-2 mt-5 mt-lg-5 mt-md-0 mb-3">
-                        <svg class="dark-mode-invert" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" viewBox="0 0 24 24" fill="none">
+                        <svg class="dark-mode-invert" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none">
                             <path
                                 d="M0.582044 11.7285C8.79451 13.4712 10.252 14.8614 12.125 22.7372C13.8067 14.8768 15.2308 13.4992 23.4018 11.8279C15.1894 10.0852 13.7319 8.69503 11.8589 0.81924C10.1769 8.67956 8.75306 10.0571 0.582044 11.7285Z"
                                 fill="#0E0E0F" />
