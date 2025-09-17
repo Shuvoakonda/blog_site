@@ -23,6 +23,8 @@ class PostsTable
                 TextColumn::make('author')
                     ->searchable(),
                 ImageColumn::make('image'),
+                ImageColumn::make('gallery')
+                    ->circular(),
                 TextColumn::make('user.name')
                     ->label('User')
                     ->sortable(),

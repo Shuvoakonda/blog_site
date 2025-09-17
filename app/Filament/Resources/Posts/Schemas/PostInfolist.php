@@ -21,8 +21,7 @@ class PostInfolist
                     ->columnSpanFull(),
                 TextEntry::make('content')
                     ->columnSpanFull(),
-                TextEntry::make('reading_time')
-                    ->numeric(),
+                TextEntry::make('reading_time'),
                 TextEntry::make('meta_title')
                     ->placeholder('-'),
                 TextEntry::make('meta_description')
@@ -39,14 +38,13 @@ class PostInfolist
                 TextEntry::make('published_at')
                     ->dateTime()
                     ->placeholder('-'),
-                TextEntry::make('view_count')
-                    ->numeric(),
+                TextEntry::make('view_count'),
                 ImageEntry::make('image')
                     ->placeholder('-'),
-                Hidden::make('user_id'),
-                TextEntry::make('post_category_id')
-                    ->numeric()
-                    ->placeholder('-'),
+                TextEntry::make('user.name')
+                    ->label('Author'),
+                TextEntry::make('category.name')
+                    ->label('Category'),
                 TextEntry::make('created_at')
                     ->dateTime()
                     ->placeholder('-'),

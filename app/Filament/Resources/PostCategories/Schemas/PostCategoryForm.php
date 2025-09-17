@@ -1,6 +1,7 @@
 <?php
 namespace App\Filament\Resources\PostCategories\Schemas;
 
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
@@ -18,6 +19,19 @@ class PostCategoryForm
                     ->required(),
                 TextInput::make('slug')
                     ->required(),
+                TextInput::make('description')
+                    ->required(),
+                FileUpload::make('image'),
+                TextInput::make('meta_title'),
+                TextInput::make('meta_description'),
+                TextInput::make('meta_keywords'),
+                TextInput::make('is_active')
+                    ->numeric()
+                    ->required(),
+                TextInput::make('sort_order')
+                    ->numeric()
+                    ->required(),
+
             ]);
     }
 }

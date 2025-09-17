@@ -22,6 +22,8 @@ class PostForm
                     ->live(onBlur: true)
                     ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                     ->required(),
+                Textarea::make('short_description'),
+                Textarea::make('description'),
                 TextInput::make('slug')
                     ->required(),
                 TextInput::make('author')
@@ -35,7 +37,8 @@ class PostForm
                     ->required()
                     ->numeric()
                     ->default(0),
-                TextInput::make('gallery'),
+                FileUpload::make('gallery')
+                    ->multiple(),
                 TextInput::make('meta_title'),
                 Textarea::make('meta_description')
                     ->columnSpanFull(),
