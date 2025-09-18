@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @include('components.header')
     <!--Home 1 Section 9-->
     <section class="sec-9-home-1">
         <div class="custom-container position-relative">
@@ -30,11 +31,10 @@
                             <div class="swiper gallery-left overflow-y-visible">
                                 <div class="swiper-wrapper">
                                     @foreach ($posts as $post)
-                                 
                                         <div class="swiper-slide w-100" data-bg="{{ $post->featured_image_url }}">
                                             <div class="article">
                                                 <div class="card-body">
-                                                    <a href="#"
+                                                    <a href="{{ route('post.show', $post->slug) }}"
                                                         class="badge bg-2 fs-8 mb-3">{{ $post->category->name ?? '-' }}</a>
                                                     <h5 class="card-title mb-0 text-white changeless">{{ $post->title }}
                                                     </h5>
@@ -66,10 +66,10 @@
                                                                         d="M2.50018 5.43423C2.50018 4.26961 3.44494 3.3255 4.61035 3.3255H15.39C16.5554 3.3255 17.5002 4.26961 17.5002 5.43422V13.1078C17.5002 14.2724 16.5554 15.2165 15.39 15.2165H6.3295L3.41902 17.3786C3.24443 17.5083 3.01159 17.5285 2.81722 17.4309C2.62285 17.3333 2.50018 17.1345 2.50018 16.9171V5.43423ZM4.61035 4.47571C4.08062 4.47571 3.65118 4.90485 3.65118 5.43423V15.7729L5.79569 14.1799C5.89495 14.1062 6.01534 14.0663 6.13902 14.0663H15.39C15.9197 14.0663 16.3492 13.6372 16.3492 13.1078V5.43422C16.3492 4.90485 15.9197 4.47571 15.39 4.47571H4.61035Z"
                                                                         fill="#fff" />
                                                                 </svg>
-                                                                <span class="text-white changeless">
+                                                                {{-- <span class="text-white changeless">
                                                                     <span class="odometer text-nowrap"
                                                                         data-count="{{ $post->comments_count ?? 0 }}"></span>
-                                                                </span>
+                                                                </span> --}}
                                                             </a>
                                                             <a href="#" class="readers fs-8">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20"

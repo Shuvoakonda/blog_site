@@ -1,9 +1,7 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -15,9 +13,9 @@ class HomeController extends Controller
     }
 
     // Show a single post
-    public function show($id)
+    public function show($slug)
     {
-        $post = Post::with(['category', 'user'])->findOrFail($id);
+        $post = Post::with(['category', 'user'])->where('slug', $slug)->firstOrFail();
         return view('single-post', compact('post'));
     }
 }
