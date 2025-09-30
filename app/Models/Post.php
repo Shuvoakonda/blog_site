@@ -83,7 +83,12 @@ class Post extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-  
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->where('approved', true);
+    }
+
     public function scopePublished($query)
     {
         return $query->where('status', 'published')

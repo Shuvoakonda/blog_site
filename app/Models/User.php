@@ -17,9 +17,18 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
+        'role_id',
         'name',
         'email',
         'password',
+        'avatar',
+        'phone',
+        'address',
+        'city',
+        'state',
+        'zip',
+        'country',
+        'email_verified_at',
     ];
 
     /**
@@ -45,8 +54,31 @@ class User extends Authenticatable
         ];
     }
 
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
     public function posts()
     {
         return $this->hasMany(Post::class, 'user_id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role && $this->role->name === 'admin';
+    }
+
+    /**
+     * Helper: check if user is author
+     */
+    public function isAuthor(): bool
+    {
+        return $this->role && $this->role->name === 'author';
     }
 }
