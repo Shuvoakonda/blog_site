@@ -18,4 +18,18 @@ class HomeController extends Controller
         $post = Post::with(['category', 'user'])->where('slug', $slug)->firstOrFail();
         return view('single-post', compact('post'));
     }
+
+    public function about()
+    {
+        return view('about');
+    }
+    public function contact()
+    {
+        return view('contact');
+    }
+    public function author()
+    {
+        return view('author');
+    }
+
 }

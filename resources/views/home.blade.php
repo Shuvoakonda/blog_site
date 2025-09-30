@@ -117,111 +117,64 @@
         </div>
     </section>
     <!--Home 3 Section 1-->
+    @php
+        $time = $post->reading_time ?? 6; // default 6
+        if ($time < 60) {
+            $formattedTime = $time . ' mins read';
+        } else {
+            $hours = floor($time / 60);
+            $minutes = $time % 60;
+            $formattedTime =
+                $hours . ' hr' . ($hours > 1 ? 's' : '') . ($minutes > 0 ? ' ' . $minutes . ' mins' : '') . ' read';
+        }
+    @endphp
     <section class="sec-1-home-3 sec-padding">
         <div class="container">
-            <div class="rounded-16 p-4 bg" data-background="assets/imgs/page/bg-home3-sec1.png">
+            <div class="rounded-16 p-4 bg" data-background="{{ asset('assets/imgs/page/bg-home3-sec1.png') }}">
                 <div class="row">
                     <div class="col-12">
                         <div class="swiper swiper-popup-search">
                             <div class="swiper-wrapper">
-                                <!--prettier-ignore-->
+                                @foreach ($posts as $post)
                                     <div class="swiper-slide p-3 rounded-16 border-200 hover-up">
-                                <div class="article card-10 style-1">
-                                    <div class="hover-effect-1">
-                                        <a href="#" class="card-img">
-                                            <img class="w-100" src="assets/imgs/other/img-other-1.png" alt="magzin">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <a href="#">
-                                            <h6 class="fs-7 mb-2 text-truncate-2">Breaking Down the Elements of a
-                                                Masterpiece Painting</h6>
-                                        </a>
-                                        <div class="d-flex align-items-center text-600">
-                                            <span class="fs-8">16 Jul, 2025</span>
-                                            <ul class="ps-4 m-0">
-                                                <li>
-                                                    <span class="fs-8">6 mins read</span>
-                                                </li>
-                                            </ul>
+                                        <div class="article card-10 style-1">
+                                            <div class="hover-effect-1">
+                                                <a href="{{ route('post.show', $post->slug) }}" class="card-img">
+                                                    <img class="w-100" src="{{ $post->featured_image_url }}"
+                                                        alt="{{ $post->title }}">
+                                                </a>
+                                            </div>
+                                            <div class="card-body">
+                                                <a href="{{ route('post.show', $post->slug) }}">
+                                                    <h6 class="fs-7 mb-2 text-truncate-2">{{ $post->title }}</h6>
+                                                </a>
+                                                <div class="d-flex align-items-center text-600">
+                                                    <span
+                                                        class="fs-8">{{ $post->published_at ? $post->published_at->format('d M, Y') : '-' }}</span>
+                                                    <ul class="ps-4 m-0">
+                                                        <li>
+                                                            <span class="fs-8">{{ $formattedTime }}</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide p-3 rounded-16 border-200 hover-up">
-                                <div class="article card-10 style-1">
-                                    <div class="hover-effect-1">
-                                        <a href="#" class="card-img">
-                                            <img class="w-100" src="assets/imgs/other/img-other-2.png" alt="magzin">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <a href="#">
-                                            <h6 class="fs-7 mb-2 text-truncate-2">The Revival of Classical Art in a Digital
-                                                Age</h6>
-                                        </a>
-                                        <div class="d-flex align-items-center text-600">
-                                            <span class="fs-8">16 Jul, 2025</span>
-                                            <ul class="ps-4 m-0">
-                                                <li>
-                                                    <span class="fs-8">6 mins read</span>
-                                                </li>
-                                            </ul>
+                                @endforeach
+                                @if ($posts->isEmpty())
+                                    <div class="swiper-slide p-3 rounded-16 border-200 hover-up">
+                                        <div class="article card-10 style-1">
+                                            <div class="card-body">
+                                                <h6 class="fs-7 mb-2 text-truncate-2">No posts found.</h6>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide p-3 rounded-16 border-200 hover-up">
-                                <div class="article card-10 style-1">
-                                    <div class="hover-effect-1">
-                                        <a href="#" class="card-img">
-                                            <img class="w-100" src="assets/imgs/other/img-other-3.png" alt="magzin">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <a href="#">
-                                            <h6 class="fs-7 mb-2 text-truncate-2">Must-See Art Exhibitions Around the World
-                                                This Year</h6>
-                                        </a>
-                                        <div class="d-flex align-items-center text-600">
-                                            <span class="fs-8">16 Jul, 2025</span>
-                                            <ul class="ps-4 m-0">
-                                                <li>
-                                                    <span class="fs-8">6 mins read</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide p-3 rounded-16 border-200 hover-up">
-                                <div class="article card-10 style-1">
-                                    <div class="hover-effect-1">
-                                        <a href="#" class="card-img">
-                                            <img class="w-100" src="assets/imgs/other/img-other-2.png" alt="magzin">
-                                        </a>
-                                    </div>
-                                    <div class="card-body">
-                                        <a href="#">
-                                            <h6 class="fs-7 mb-2 text-truncate-2">The Revival of Classical Art in a Digital
-                                                Age</h6>
-                                        </a>
-                                        <div class="d-flex align-items-center text-600">
-                                            <span class="fs-8">16 Jul, 2025</span>
-                                            <ul class="ps-4 m-0">
-                                                <li>
-                                                    <span class="fs-8">6 mins read</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </section>
     <!--Home 2 Section 6-->

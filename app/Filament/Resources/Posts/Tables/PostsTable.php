@@ -9,6 +9,7 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 
 class PostsTable
 {
@@ -16,56 +17,92 @@ class PostsTable
     {
         return $table
             ->columns([
+               
                 TextColumn::make('title')
-                    ->searchable(),
-                TextColumn::make('slug')
-                    ->searchable(),
-                TextColumn::make('author')
-                    ->searchable(),
-                ImageColumn::make('image'),
-                ImageColumn::make('gallery')
-                    ->circular(),
-                TextColumn::make('user.name')
-                    ->label('User')
+                    ->description(fn($record) => Str::limit($record->short_description, 40))
+                    ->icon('heroicon-o-document-text')
+                    ->searchable()
                     ->sortable(),
+
+                TextColumn::make('slug')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+
+             
+                TextColumn::make('author')
+                    ->badge()
+                    ->color('info')
+                    ->searchable()
+                    ->sortable(),
+
+          
+                ImageColumn::make('image')
+                    ->circular()
+                    ->label('Thumbnail'),
+
+      
+                ImageColumn::make('gallery')
+                    ->circular()
+                    ->limit(3)
+                    ->stacked()
+                    ->label('Gallery'),
+
+           
                 TextColumn::make('category.name')
                     ->label('Category')
-                    ->sortable(),
-                TextColumn::make('reading_time')
-                    ->numeric()
-                    ->sortable(),
+                    ->sortable()
+                    ->badge()
+                    ->color('gray'),
+
+      
                 TextColumn::make('meta_title')
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+
                 TextColumn::make('meta_keywords')
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+
+            
                 TextColumn::make('status')
-                    ->badge(),
-                IconColumn::make('is_featured')
-                    ->boolean(),
-                IconColumn::make('allow_comments')
-                    ->boolean(),
-                TextColumn::make('published_at')
-                    ->dateTime()
+                    ->badge()
+                    ->colors([
+                        'danger'  => 'draft',
+                        'success' => 'published',
+                        'warning' => 'archived',
+                    ])
                     ->sortable(),
-                TextColumn::make('view_count')
-                    ->numeric()
+
+           
+                IconColumn::make('is_featured')
+                    ->boolean()
+                    ->label('Featured'),
+
+                IconColumn::make('allow_comments')
+                    ->boolean()
+                    ->label('Comments'),
+
+        
+                TextColumn::make('published_at')
+                    ->date('M d, Y')
                     ->sortable(),
 
                 TextColumn::make('created_at')
-                    ->dateTime()
+                    ->dateTime('M d, Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 TextColumn::make('updated_at')
-                    ->dateTime()
+                    ->dateTime('M d, Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+              
             ])
             ->recordActions([
-                ViewAction::make(),
-                EditAction::make(),
+                ViewAction::make()->icon('heroicon-o-eye')->color('info'),
+                EditAction::make()->icon('heroicon-o-pencil')->color('warning'),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

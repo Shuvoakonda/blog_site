@@ -11,20 +11,20 @@
                  <div class="navbar-collapse d-none d-lg-block" id="navbarNav">
                      <ul class="navbar-nav">
                          <li class="nav-item">
-                             <a class="nav-link link-effect-1 " href="#"><span>Home</span></a>
+                             <a class="nav-link link-effect-1 " href="{{ route('home') }}"><span>Home</span></a>
 
                          </li>
 
 
                          <li class="nav-item">
-                             <a class="nav-link link-effect-1 " href="page-about.html"><span>Author</span></a>
+                             <a class="nav-link link-effect-1 " href="{{ route('author') }}"><span>Author</span></a>
                          </li>
                          <li class="nav-item">
-                             <a class="nav-link link-effect-1 " href="page-about.html"><span>About Us</span></a>
+                             <a class="nav-link link-effect-1 " href="{{ route('about') }}"><span>About Us</span></a>
                          </li>
 
                          <li class="nav-item">
-                             <a class="nav-link link-effect-1 " href="page-contact.html"><span>Contact</span></a>
+                             <a class="nav-link link-effect-1 " href="{{ route('contact') }}"><span>Contact</span></a>
                          </li>
                      </ul>
                  </div>
@@ -208,113 +208,7 @@
                              </li>
                          </ul>
                      </div>
-                     <div class="mt-5">
-                         <div class="block-recomment">
-                             <h5 class="mb-3">Recommended for you</h5>
-                             <div class="swiper swiper-popup-search">
-                                 <div class="swiper-wrapper">
-                                     <!--prettier-ignore-->
-                                        <div class="swiper-slide hover-up">
-                                     <div class="article card-10 style-1">
-                                         <div class="hover-effect-1">
-                                             <a href="#" class="card-img">
-                                                 <img class="w-100" src="assets/imgs/other/img-other-1.png"
-                                                     alt="magzin">
-                                             </a>
-                                         </div>
-                                         <div class="card-body">
-                                             <a href="#">
-                                                 <h6 class="fs-7 mb-2 text-truncate-2">Breaking Down the Elements of a
-                                                     Masterpiece Painting</h6>
-                                             </a>
-                                             <div class="d-flex align-items-center text-600">
-                                                 <span class="fs-8">16 Jul, 2025</span>
-                                                 <ul class="ps-4 m-0">
-                                                     <li>
-                                                         <span class="fs-8">6 mins read</span>
-                                                     </li>
-                                                 </ul>
-                                             </div>
-                                         </div>
-                                     </div>
-                                 </div>
-                                 <div class="swiper-slide hover-up">
-                                     <div class="article card-10 style-1">
-                                         <div class="hover-effect-1">
-                                             <a href="#" class="card-img">
-                                                 <img class="w-100" src="assets/imgs/other/img-other-2.png"
-                                                     alt="magzin">
-                                             </a>
-                                         </div>
-                                         <div class="card-body">
-                                             <a href="#">
-                                                 <h6 class="fs-7 mb-2 text-truncate-2">The Revival of Classical Art in
-                                                     a
-                                                     Digital Age</h6>
-                                             </a>
-                                             <div class="d-flex align-items-center text-600">
-                                                 <span class="fs-8">16 Jul, 2025</span>
-                                                 <ul class="ps-4 m-0">
-                                                     <li>
-                                                         <span class="fs-8">6 mins read</span>
-                                                     </li>
-                                                 </ul>
-                                             </div>
-                                         </div>
-                                     </div>
-                                 </div>
-                                 <div class="swiper-slide hover-up">
-                                     <div class="article card-10 style-1">
-                                         <div class="hover-effect-1">
-                                             <a href="#" class="card-img">
-                                                 <img class="w-100" src="assets/imgs/other/img-other-3.png"
-                                                     alt="magzin">
-                                             </a>
-                                         </div>
-                                         <div class="card-body">
-                                             <a href="#">
-                                                 <h6 class="fs-7 mb-2 text-truncate-2">Must-See Art Exhibitions Around
-                                                     the World This Year</h6>
-                                             </a>
-                                             <div class="d-flex align-items-center text-600">
-                                                 <span class="fs-8">16 Jul, 2025</span>
-                                                 <ul class="ps-4 m-0">
-                                                     <li>
-                                                         <span class="fs-8">6 mins read</span>
-                                                     </li>
-                                                 </ul>
-                                             </div>
-                                         </div>
-                                     </div>
-                                 </div>
-                                 <div class="swiper-slide hover-up">
-                                     <div class="article card-10 style-1">
-                                         <div class="hover-effect-1">
-                                             <a href="#" class="card-img">
-                                                 <img class="w-100" src="assets/imgs/other/img-other-2.png"
-                                                     alt="magzin">
-                                             </a>
-                                         </div>
-                                         <div class="card-body">
-                                             <a href="#">
-                                                 <h6 class="fs-7 mb-2 text-truncate-2">The Revival of Classical Art in
-                                                     a
-                                                     Digital Age</h6>
-                                             </a>
-                                             <div class="d-flex align-items-center text-600">
-                                                 <span class="fs-8">16 Jul, 2025</span>
-                                                 <ul class="ps-4 m-0">
-                                                     <li>
-                                                         <span class="fs-8">6 mins read</span>
-                                                     </li>
-                                                 </ul>
-                                             </div>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
+                     
                  </div>
              </div>
          </div>
