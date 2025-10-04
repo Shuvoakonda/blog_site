@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('state')->nullable()->after('city');
             $table->string('zip')->nullable()->after('state');
             $table->string('country')->nullable()->after('zip');
+             $table->string('role_id')->nullable();
         });
     }
 
@@ -28,7 +29,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['avatar', 'phone', 'address', 'city', 'state', 'zip', 'country']);
+            $table->dropColumn(['avatar', 'phone', 'address', 'city', 'state', 'zip', 'country', 'role_id']);
         });
     }
 };

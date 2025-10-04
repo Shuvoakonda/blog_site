@@ -44,7 +44,7 @@
                                                         class="bottom mt-auto d-flex flex-wrap align-items-center gap-2 pt-5">
                                                         <a href="#" class="author d-flex align-items-center gap-2">
                                                             <img class="avatar avatar-md rounded-circle"
-                                                                src="{{ $post->user->avatar ?? asset('assets/img/default.jpg') }}"
+                                                                src="{{ Storage::url($post->user->avatar ?? 'assets/img/default.jpg') }}"
                                                                 alt="author">
                                                             <span
                                                                 class="fs-7 text-white fw-regular changeless">{{ $post->user->name ?? $post->author }}</span>

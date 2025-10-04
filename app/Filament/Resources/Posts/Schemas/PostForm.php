@@ -5,7 +5,6 @@ use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -31,25 +30,21 @@ class PostForm
 
                             TextInput::make('slug')
                                 ->required(),
-
-                            TextInput::make('author')
-                                ->disabled()
-                                ->default(auth()->user()->name),
-
-                            Hidden::make('user_id')
-                                ->default(auth()->id()),
-                        ])
-                        ->columns(2),
-
-                    TabsTab::make('Content')
-                        ->schema([
                             Textarea::make('short_description'),
                             Textarea::make('description')->columnSpanFull(),
                             Textarea::make('excerpt')->columnSpanFull(),
                             Textarea::make('content')
                                 ->required()
                                 ->columnSpanFull(),
-                        ]),
+
+                            Hidden::make('author')
+                                ->default(auth()->user()->name)
+                                ->disabled(),
+
+                            Hidden::make('user_id')
+                                ->default(auth()->id()),
+                        ])
+                        ->columns(2),
 
                     TabsTab::make('Media')
                         ->schema([

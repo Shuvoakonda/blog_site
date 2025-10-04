@@ -437,6 +437,7 @@
         </div>
         <div class="sidebar-overlay"></div>
         <!--Single 1 Section 1-->
+      
         <section class="sec-1-single-1 pb-70">
             <div class="container">
                 <div class="row">
@@ -495,7 +496,7 @@
                                             fill="#626568" />
                                     </svg>
                                     <span><span class="odometer text-nowrap"
-                                            data-count="{{ $post->comments_count ?? 0 }}"></span> Comments</span>
+                                            data-count="{{ $post->comments->count() ?? 0 }}"></span> Comments</span>
                                 </a>
                                 <a href="#" class="readers d-flex align-items-center fs-8">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -520,11 +521,7 @@
                     <div class="col-lg-9 col-md-10 offset-lg-1 offset-md-1">
                         <!-- prettier-ignore -->
                         <div class="d-flex flex-column gap-3">
-                        <p class="text-dark">In an era defined by rapid notifications, endless to-do lists, and the
-                            constant
-                            chase for productivity, slowing down can feel like a rebellious act. We’ve been conditioned to
-                            believe that faster is better—that success lies in motion, in multitasking, in the hustle. But
-                            what if the real fulfillment comes not from doing more, but from doing less, more intentionally?
+                        <p class="text-dark">
                         </p>
                         <h4 class="mb-0">The Illusion of Busyness</h4>
                         <p class="text-dark m-0">Being busy has become a badge of honor. We equate packed schedules with

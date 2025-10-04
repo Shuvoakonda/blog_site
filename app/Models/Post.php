@@ -14,6 +14,13 @@ class Post extends Model
     {
         parent::boot();
 
+        static::creating(function ($post) {
+            if (auth()->check() && empty($post->author)) {
+                $post->author  = auth()->user()->name;
+                $post->user_id = auth()->id();
+            }
+        });
+
         static::deleting(function ($post) {
             if ($post->image) {
                 Storage::disk('public')->delete($post->image);
@@ -26,6 +33,10 @@ class Post extends Model
         });
 
         static::updating(function ($post) {
+            if (auth()->check()) {
+                $post->author = auth()->user()->name;
+            }
+
             if ($post->isDirty('image')) {
                 $original = $post->getOriginal('image');
                 if ($original) {
@@ -42,7 +53,7 @@ class Post extends Model
             }
         });
     }
-    use HasFactory;
+ 
 
     protected $fillable = [
         'title',

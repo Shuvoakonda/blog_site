@@ -6,6 +6,7 @@ use Filament\Infolists\Components\IconEntry;
 use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
+use Filament\Tables\Columns\ImageColumn;
 
 class PostInfolist
 {
@@ -39,7 +40,7 @@ class PostInfolist
                     ->dateTime()
                     ->placeholder('-'),
                 TextEntry::make('view_count'),
-                ImageEntry::make('image')
+                ImageColumn::make('image')
                     ->placeholder('-'),
                 TextEntry::make('user.name')
                     ->label('Author'),
